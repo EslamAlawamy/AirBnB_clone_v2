@@ -4,6 +4,7 @@ from fabric.api import local, task
 from datetime import datetime
 
 
+@task
 def do_pack():
     """archive web_static"""
     try:
