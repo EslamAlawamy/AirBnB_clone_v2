@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-""" compress a folder """
+""" generates a .tgz archive from the contents of the web_static """
+
+from fabric.api import local, task
 from datetime import datetime
-from fabric.api import local
-import os
 
 
+@task
 def do_pack():
     """ archive web_static """
     try:
-        if not os.path.exists("versions"):
-            local('mkdir versions')
-        t = datetime.now()
-        f = "%Y%m%d%H%M%S"
-        archive_path = 'versions/web_static_{}.tgz'.format(t.strftime(f))
-        local('tar -cvzf {} web_static'.format(archive_path))
-        return archive_path
-    except:
+        f_current_time = datetime.now().strftime('%Y%m%d%H%M%S')
+        file_name = f'web_static_{f_current_time}.tgz web_static'
+        local("mkdir -p versions")
+        local(f"tar -cvzf versions/{file_name}")
+        return "versions/"
+    except Exception as e:
         return None
