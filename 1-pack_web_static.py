@@ -6,6 +6,7 @@ import os
 
 
 def do_pack():
+    """ archive web_static """
     try:
         if not os.path.exists("versions"):
             local('mkdir versions')
