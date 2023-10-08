@@ -5,6 +5,7 @@ import os
 from datetime import datetime
 
 
+@task
 def do_pack():
     """archive web_static"""
     try:
@@ -17,6 +18,7 @@ def do_pack():
         return None
 
 
+@task
 def do_deploy(archive_path):
     """deploy web_static to servers"""
     env.hosts = ['35.153.79.242', '52.201.164.137']
