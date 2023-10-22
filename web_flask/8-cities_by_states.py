@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def close_storage(exception):
+def teardown(exception):
     """ Remove the current SQLAlchemy Session """
     storage.close()
 
@@ -17,7 +17,7 @@ def close_storage(exception):
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
     """ Display a list of states and their cities """
-    states = storage.all(State).values()
+    states = storage.all("State").values()
     sorted_states = sorted(states, key=lambda s: s.name)
     return render_template('8-cities_by_states.html', states=sorted_states)
 
