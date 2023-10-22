@@ -18,7 +18,7 @@ def teardown(exception):
 def cities_by_states():
     """ Display a list of states and their cities """
     slist = sorted(storage.all(
-    State).values(), key=lambda x: x.name)
+        State).values(), key=lambda x: x.name)
     for s in slist:
         s.cities.sort(key=lambda x: x.name)
     return render_template("8-cities_by_states.html", sorted_states_list=slist)
