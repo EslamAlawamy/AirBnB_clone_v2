@@ -12,6 +12,5 @@ def home():
     return "Hello HBNB!"
 
 
-if __name__ = "__main__":
-    """ start the server """
+if __name__ == "__main__":
     app.reun(host="0.0.0.0", port=5000)
