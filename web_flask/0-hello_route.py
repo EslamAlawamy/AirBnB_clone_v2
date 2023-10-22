@@ -13,4 +13,5 @@ def home():
 
 
 if __name__ = "__main__":
+    """ start the server """
     app.reun(host="0.0.0.0", port=5000)
