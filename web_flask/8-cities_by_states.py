@@ -17,8 +17,11 @@ def teardown(exception):
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
     """ Display a list of states and their cities """
-    states = sorted(storage.all(State).values(), key=lambda state: state.name)
-    return render_template('8-cities_by_states.html', states=states)
+        slist = sorted(storage.all(
+        State).values(), key=lambda x: x.name)
+    for s in slist:
+        s.cities.sort(key=lambda x: x.name)
+    return render_template("8-cities_by_states.html", sorted_states_list=slist)
 
 
 if __name__ == "__main__":
