@@ -9,7 +9,7 @@
         {% for state in states %}
         <li>{{ state.id }}: <b>{{ state.name }}</b>
             <ul>
-                {% for city in state.cities %}
+                {% for city in state.cities if state.name != 'Georgia' %}
                 <li>{{ city.id }}: <b>{{ city.name }}</b></li>
                 {% endfor %}
             </ul>
